@@ -9,18 +9,21 @@ const Sales = () => {
       <Stack direction="row" justifyContent="space-between" alignItems="center" mb={5.375}>
         <div>
           <Typography variant="h4" mb={0.5}>
-            Today's Sales
-          </Typography>
-          <Typography variant="subtitle1" color="primary.lighter">
-            Sales Summary
+            Resumen
           </Typography>
         </div>
         <Button variant="outlined" startIcon={<IconifyIcon icon="solar:upload-linear" />}>
-          Export
+          Exportar
         </Button>
       </Stack>
 
-      <Grid container spacing={{ xs: 3.875, xl: 2 }} columns={{ xs: 1, sm: 2, md: 4 }}>
+      <Grid
+        container
+        spacing={2}
+        columns={3}
+        justifyContent="center"
+        alignItems="center"
+      >
         {sales.map((item) => (
           <Grid item xs={1} key={item.label}>
             <SaleCard item={item} />

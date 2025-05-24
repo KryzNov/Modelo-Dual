@@ -6,7 +6,7 @@ const TotalRevenue = () => {
   return (
     <Paper sx={{ p: 3 }}>
       <Typography variant="h4" mb={3}>
-        Total Revenue
+        IES por sistema educativo
       </Typography>
 
       <TotalRevenueChart data={totalRevenue} style={{ height: 247 }} />

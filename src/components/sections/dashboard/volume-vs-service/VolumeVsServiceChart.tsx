@@ -48,7 +48,7 @@ const VolumeVsServiceChart = ({ chartRef, data, style, ...rest }: VolumeVsServic
 
       xAxis: {
         show: false,
-        data: ['', '', '', '', '', '', ''],
+        data: ['ECONOMICO', 'TRANSPORTE', 'ALIMENTACION', 'NINGUNO'],
         boundaryGap: false,
       },
 
@@ -67,7 +67,7 @@ const VolumeVsServiceChart = ({ chartRef, data, style, ...rest }: VolumeVsServic
 
       series: [
         {
-          name: 'Services',
+          name: 'Tipo de Apoyo',
           type: 'bar',
           data: data.services,
           itemStyle: {

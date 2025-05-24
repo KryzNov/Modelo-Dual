@@ -44,21 +44,8 @@ const TotalRevenueChart = ({ data, style }: TotalRevenueChartProps) => {
       tooltip: {
         confine: true,
       },
-
-      legend: {
-        data: ['Online Sales', 'Offline Sales'],
-        left: 'center',
-        bottom: 0,
-        icon: 'circle',
-        textStyle: {
-          fontFamily: theme.typography.body2.fontFamily,
-        },
-        itemGap: isSm ? 20 : 10,
-        itemHeight: 11,
-      },
-
       xAxis: {
-        data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        data: ['TECNM', 'UP', 'UT', 'UA', 'U. Rosario', 'IPN', 'Otro'],
         axisTick: {
           show: false,
         },

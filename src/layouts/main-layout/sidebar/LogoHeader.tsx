@@ -15,9 +15,9 @@ const LogoHeader = (props: LogoHeaderProps) => {
       href={rootPaths.root}
       {...props}
     >
-      <img src="public/LOGO.png" alt="Logo" style={{ width: 56, height: 56 }} />
+      <img src="/dabang/LOGO.png" alt="Logo" style={{ width: 56, height: 56 }} />
       <Typography variant="h2" color="primary.darker">
-        Modelo Dual
+        SIED
       </Typography>
     </Stack>
   );

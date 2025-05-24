@@ -5,149 +5,109 @@ interface ProductPerformanceData {
     role: string;
   };
   name: string;
-  priority: 'Low' | 'Medium' | 'High' | 'Critical';
-  budget: number;
+  priority: string;
+  budget: string;
 }
 
 export const rows: ProductPerformanceData[] = [
   {
     id: 1,
     assigned: {
-      name: 'Andrew McDownland',
-      role: 'Project Manager',
+      name: 'María González',
+      role: 'Instituto Tecnológico de Aguascalientes',
     },
-    name: 'Real Homes WP Theme',
-    priority: 'Medium',
-    budget: 24500,
+    name: 'BioTerra',
+    priority: 'Agroindustrial',
+    budget: 'Semestral',
   },
   {
     id: 2,
     assigned: {
-      name: 'Sunil Joshi',
-      role: 'Web Designer',
+      name: 'Carlos Martínez',
+      role: 'UANL',
     },
-    name: 'Elite Admin',
-    priority: 'Low',
-    budget: 3900,
+    name: 'SmartForest',
+    priority: 'Silvicultura',
+    budget: 'Anual',
   },
   {
     id: 3,
     assigned: {
-      name: 'Christopher Jamil',
-      role: 'Project Manager',
+      name: 'Ana López',
+      role: 'UV',
     },
-    name: 'MedicalPro WP Theme',
-    priority: 'High',
-    budget: 12800,
+    name: 'AcuaSustentable',
+    priority: 'Pesca y Acuacultura',
+    budget: 'Mensual',
   },
   {
     id: 4,
     assigned: {
-      name: 'Nirav Joshi',
-      role: 'Frontend Engineer',
+      name: 'Jorge Rodríguez',
+      role: 'IPN',
     },
-    name: 'Hosting Press HTML',
-    priority: 'Critical',
-    budget: 2400,
+    name: 'MinEco',
+    priority: 'Minería',
+    budget: 'Bimestral',
   },
   {
     id: 5,
     assigned: {
-      name: 'Amy Adams',
-      role: 'Backend Developer',
+      name: 'Laura Sánchez',
+      role: 'UDG',
     },
-    name: 'Ecommerce Platform',
-    priority: 'High',
-    budget: 15000,
+    name: 'NutriSafe',
+    priority: 'Alimentos, Bebidas y Tabaco',
+    budget: 'Trimestral',
   },
   {
     id: 6,
     assigned: {
-      name: 'John Doe',
-      role: 'Full Stack Developer',
+      name: 'Sofía Hernández',
+      role: 'BUAP',
     },
-    name: 'Social Media App',
-    priority: 'Medium',
-    budget: 18500,
+    name: 'TexCycle',
+    priority: 'Textiles, Vestido y Cuero',
+    budget: 'Semestral',
   },
   {
     id: 7,
     assigned: {
-      name: 'Jane Smith',
-      role: 'UI/UX Designer',
+      name: 'Diego Ramírez',
+      role: 'UAEMex',
     },
-    name: 'Design System',
-    priority: 'Low',
-    budget: 8100,
+    name: 'EcoBuild',
+    priority: 'Construcción',
+    budget: 'Anual',
   },
   {
     id: 8,
     assigned: {
-      name: 'Robert Brown',
-      role: 'DevOps Engineer',
+      name: 'Ricardo Torres',
+      role: 'UMSNH',
     },
-    name: 'Cloud Infrastructure',
-    priority: 'Critical',
-    budget: 22300,
+    name: 'GreenEnergy',
+    priority: 'Electricidad, Gas y Agua',
+    budget: 'Mensual',
   },
   {
     id: 9,
     assigned: {
-      name: 'Laura Wilson',
-      role: 'Mobile Developer',
+      name: 'Patricia Morales',
+      role: 'UADY',
     },
-    name: 'Mobile Banking App',
-    priority: 'Medium',
-    budget: 19000,
+    name: 'EduTech',
+    priority: 'Educación',
+    budget: 'Bimestral',
   },
   {
     id: 10,
     assigned: {
-      name: 'James Taylor',
-      role: 'Data Scientist',
+      name: 'Fernando Castro',
+      role: 'UAM',
     },
-    name: 'AI Research Project',
-    priority: 'High',
-    budget: 30200,
-  },
-  {
-    id: 11,
-    assigned: {
-      name: 'Emily Davis',
-      role: 'QA Engineer',
-    },
-    name: 'Testing Automation',
-    priority: 'Low',
-    budget: 7600,
-  },
-  {
-    id: 12,
-    assigned: {
-      name: 'Michael Miller',
-      role: 'Security Specialist',
-    },
-    name: 'Security Enhancement',
-    priority: 'Critical',
-    budget: 20400,
-  },
-  {
-    id: 13,
-    assigned: {
-      name: 'Sarah White',
-      role: 'Product Manager',
-    },
-    name: 'New Product Launch',
-    priority: 'High',
-    budget: 2500,
-  },
-  {
-    id: 14,
-    assigned: {
-      name: 'Daniel Lee',
-      role: 'Frontend Developer',
-    },
-    name: 'Marketing Website',
-    priority: 'Medium',
-    budget: 9900,
+    name: 'DataMex',
+    priority: 'Tecnologías de la Información y Comunicaciones',
+    budget: 'Trimestral',
   },
 ];

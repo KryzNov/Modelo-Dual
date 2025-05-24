@@ -37,7 +37,7 @@ const VolumeVsService = () => {
   return (
     <Paper sx={{ p: 3 }}>
       <Typography variant="h4" color="primary.dark" mb={3}>
-        Volume vs Service
+        Apoyos a estudiantes
       </Typography>
 
       <VolumeVsServiceChart
@@ -46,31 +46,6 @@ const VolumeVsService = () => {
         style={{ height: 182 }}
         sx={{ pb: 1 }}
       />
-
-      <Stack
-        direction="row"
-        justifyContent="center"
-        divider={<Divider orientation="vertical" flexItem sx={{ height: 24 }} />}
-        sx={{ borderTop: 1, borderColor: 'grey.A100', pt: 2 }}
-        gap={2.5}
-      >
-        <LegendToggleButton
-          name="Volume"
-          icon="codicon:circle-filled"
-          value={numberFormat(totalVolume)}
-          color="info.main"
-          legend={legend}
-          onHandleLegendToggle={handleLegendToggle}
-        />
-        <LegendToggleButton
-          name="Services"
-          icon="codicon:circle-filled"
-          value={numberFormat(totalServices)}
-          color="success.main"
-          legend={legend}
-          onHandleLegendToggle={handleLegendToggle}
-        />
-      </Stack>
     </Paper>
   );
 };

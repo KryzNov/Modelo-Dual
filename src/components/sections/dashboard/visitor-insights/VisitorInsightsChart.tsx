@@ -3,14 +3,16 @@ import { MutableRefObject, useMemo } from 'react';
 import * as echarts from 'echarts/core';
 import {
   TooltipComponent,
-  TooltipComponentOption,
   GridComponent,
-  GridComponentOption,
   LegendComponent,
-  LegendComponentOption,
+  TitleComponent,
 } from 'echarts/components';
-import { LineChart, LineSeriesOption } from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
+import { 
+    PieChart,
+    BarChart,
+    PieSeriesOption,
+    BarSeriesOption,
+} from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 import ReactEchart from 'components/base/ReactEhart';
@@ -19,141 +21,112 @@ echarts.use([
   TooltipComponent,
   GridComponent,
   LegendComponent,
-  LineChart,
+  TitleComponent,
+  PieChart,
+  BarChart,
   CanvasRenderer,
-  UniversalTransition,
 ]);
 
 type EChartsOption = echarts.ComposeOption<
-  TooltipComponentOption | GridComponentOption | LegendComponentOption | LineSeriesOption
+  | TooltipComponent
+  | GridComponent
+  | LegendComponent
+  | PieSeriesOption
+  | BarSeriesOption
 >;
 
 interface VisitorInsightsChartProps {
   chartRef: MutableRefObject<EChartsReactCore | null>;
-  data: {
-    'loyal customers': number[];
-    'new customers': number[];
-    'unique customers': number[];
-  };
-  style?: {
-    height: number;
-    width?: number;
-  };
+  data: { [label: string]: number }; // Simplificado para pie/bar charts
+  style?: { height: number; width?: number };
+  title?: string;
+  type?: 'pie' | 'bar';
 }
 
-const VisitorInsightsChart = ({ chartRef, data, style }: VisitorInsightsChartProps) => {
+const VisitorInsightsChart = ({
+  chartRef,
+  data,
+  style,
+  title,
+  type = 'pie',
+}: VisitorInsightsChartProps) => {
   const theme = useTheme();
 
-  const visitorInsightsChartOption = useMemo(() => {
+  const chartOption = useMemo(() => {
+    const categories = Object.keys(data);
+    const values = Object.values(data);
+
     const option: EChartsOption = {
-      color: [
-        theme.palette.secondary.darker,
-        theme.palette.error.darker,
-        theme.palette.success.darker,
-      ],
-
+      title: {
+        text: title || '',
+        left: 'center',
+        textStyle: {
+          color: theme.palette.text.primary,
+        },
+      },
       tooltip: {
-        trigger: 'axis',
-        confine: true,
-        axisPointer: {
-          lineStyle: {
-            color: theme.palette.error.main,
-          },
-        },
+        trigger: type === 'pie' ? 'item' : 'axis',
       },
-
       legend: {
-        show: false,
-      },
-
-      xAxis: {
-        type: 'category',
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        axisTick: {
-          show: false,
-        },
-        axisLabel: {
-          fontFamily: theme.typography.button.fontFamily,
-          fontSize: theme.typography.fontSize / 1.4,
-          color: theme.palette.grey[200],
-        },
-        axisLine: {
-          show: false,
+        top: 'bottom',
+        textStyle: {
+          color: theme.palette.text.secondary,
         },
       },
-
-      yAxis: {
-        type: 'value',
-        axisLabel: {
-          fontSize: theme.typography.caption.fontSize,
-          color: theme.palette.grey.A200,
-        },
-        splitLine: {
-          lineStyle: {
-            color: theme.palette.grey.A400,
-          },
-        },
-      },
-
-      grid: {
-        top: 8,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        containLabel: true,
-      },
-
-      series: [
-        {
-          name: 'Loyal Customers',
-          type: 'line',
-          data: data['loyal customers'],
-          smooth: true,
-          symbol: 'circle',
-          showSymbol: false,
-          symbolSize: 14,
-
-          lineStyle: {
-            width: 4,
-          },
-        },
-        {
-          name: 'New Customers',
-          type: 'line',
-          data: data['new customers'],
-          smooth: true,
-          symbol: 'circle',
-          showSymbol: false,
-          symbolSize: 14,
-          lineStyle: {
-            width: 4,
-          },
-        },
-        {
-          name: 'Unique Customers',
-          type: 'line',
-          data: data['unique customers'],
-          smooth: true,
-          symbol: 'circle',
-          showSymbol: false,
-          symbolSize: 14,
-          lineStyle: {
-            width: 4,
-          },
-        },
-      ],
+      ...(type === 'pie'
+        ? {
+            series: [
+              {
+                name: 'Distribución',
+                type: 'pie',
+                radius: '50%',
+                data: categories.map((label) => ({
+                  name: label,
+                  value: data[label],
+                })),
+                label: {
+                  color: theme.palette.text.primary,
+                },
+                emphasis: {
+                  itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: theme.palette.grey[800],
+                  },
+                },
+              },
+            ],
+          }
+        : {
+            xAxis: {
+              type: 'category',
+              data: categories,
+              axisLabel: {
+                color: theme.palette.text.secondary,
+              },
+            },
+            yAxis: {
+              type: 'value',
+              axisLabel: {
+                color: theme.palette.text.secondary,
+              },
+            },
+            series: [
+              {
+                type: 'bar',
+                data: values,
+                itemStyle: {
+                  color: theme.palette.primary.main,
+                },
+              },
+            ],
+          }),
     };
-    return option;
-  }, [theme, data]);
 
-  return (
-    <ReactEchart
-      echarts={echarts}
-      option={visitorInsightsChartOption}
-      ref={chartRef}
-      style={style}
-    />
-  );
+    return option;
+  }, [data, type, theme, title]);
+
+  return (<ReactEchart echarts={echarts} option={chartOption} ref={chartRef} style={style} />);
 };
 
 export default VisitorInsightsChart;
