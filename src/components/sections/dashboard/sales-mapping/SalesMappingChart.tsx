@@ -4,97 +4,106 @@ import * as echarts from 'echarts/core';
 import {
   TooltipComponent,
   TooltipComponentOption,
-  GeoComponent,
-  GeoComponentOption,
+  LegendComponent,
+  LegendComponentOption,
 } from 'echarts/components';
-import { MapChart, MapSeriesOption } from 'echarts/charts';
+import { PieChart, PieSeriesOption } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
-import { CallbackDataParams } from 'echarts/types/src/util/types.js';
 import EChartsReactCore from 'echarts-for-react/lib/core';
-import world from 'assets/json/world.json';
-import { SalesMappingDataItem } from 'data/sales-mapping-data';
 import ReactEchart from 'components/base/ReactEhart';
 
-echarts.use([TooltipComponent, GeoComponent, MapChart, CanvasRenderer]);
-//@ts-ignore
-echarts.registerMap('world', { geoJSON: world });
+echarts.use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer]);
 
 type EChartsOption = echarts.ComposeOption<
-  TooltipComponentOption | GeoComponentOption | MapSeriesOption
+  TooltipComponentOption | LegendComponentOption | PieSeriesOption
 >;
 
 interface SalesMappingChartProps {
   salesMappingChartRef: MutableRefObject<EChartsReactCore | null>;
-  data: SalesMappingDataItem[];
   style?: {
     height?: number;
     width?: number;
   };
-  minZoomLevel: number;
-  maxZoomLevel: number;
   sx?: SxProps;
 }
 
 const SalesMappingChart = ({
   salesMappingChartRef,
-  data,
   style,
-  minZoomLevel,
-  maxZoomLevel,
   ...props
 }: SalesMappingChartProps) => {
   const theme = useTheme();
 
-  const salesMappingChartOption = useMemo(() => {
+  const pieChartOption = useMemo(() => {
     const option: EChartsOption = {
+      color: [
+        theme.palette.primary.main,
+        theme.palette.secondary.main,
+        theme.palette.info.main,
+        theme.palette.warning.main
+      ],
+
       tooltip: {
         trigger: 'item',
-        showDelay: 0,
-        transitionDuration: 0.2,
-        formatter: (params: CallbackDataParams) => {
-          const { name, value } = params;
-          if (value) return `${name} : ${value}`;
-          else return `${name} : 0`;
-        },
+        formatter: '{b}: {d}%'
       },
 
-      series: [
-        {
-          type: 'map',
-          map: 'world',
-          data,
-          roam: true,
-          scaleLimit: {
-            min: minZoomLevel,
-            max: maxZoomLevel,
-          },
-          left: 0,
-          right: 0,
-          label: {
-            show: false,
-          },
-          selectedMode: false,
-          itemStyle: {
-            areaColor: theme.palette.grey.A700,
-            borderColor: theme.palette.common.white,
-            borderWidth: 0.2,
-          },
-
-          emphasis: {
-            disabled: true,
-          },
+      legend: {
+        orient: 'horizontal', // Cambiado a horizontal
+        bottom: 0, // Posicionado en la parte inferior
+        textStyle: {
+          fontFamily: theme.typography.fontFamily,
+          color: theme.palette.text.primary
         },
-      ],
+        data: ['Investigación', 'Privada', 'Otro', 'Pública'] // Actualizado según tu imagen
+      },
+
+      series: [{
+        name: 'Tipo de Unidad Dual',
+        type: 'pie',
+        radius: ['40%', '70%'], // Radio interno y externo para estilo donut
+        center: ['50%', '45%'], // Centrado considerando la leyenda
+        data: [
+          { value: 30, name: 'Investigación' },
+          { value: 30, name: 'Privada' },
+          { value: 10, name: 'Otro' },
+          { value: 30, name: 'Pública' }
+        ],
+        itemStyle: {
+          borderRadius: 5,
+          borderColor: theme.palette.background.default,
+          borderWidth: 2
+        },
+        label: {
+          show: true,
+          formatter: '{b}: {d}%',
+          color: theme.palette.text.primary
+        },
+        labelLine: {
+          show: true
+        },
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }],
+      
+      grid: {
+        bottom: '20%' // Espacio para la leyenda horizontal
+      }
     };
     return option;
-  }, [theme, data]);
+  }, [theme]);
 
   return (
     <ReactEchart
       echarts={echarts}
-      option={salesMappingChartOption}
+      option={pieChartOption}
       ref={salesMappingChartRef}
-      style={style}
+      style={{ ...style, height: 400 }} // Altura fija para mejor visualización
       {...props}
     />
   );

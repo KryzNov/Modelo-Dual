@@ -3,9 +3,7 @@ import {
   Button,
   Checkbox,
   Container,
-  Divider,
   FormControlLabel,
-  Grid,
   Link,
   Paper,
   Stack,
@@ -14,9 +12,7 @@ import {
 } from '@mui/material';
 import { SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import paths, { rootPaths } from 'routes/paths';
 import LogoHeader from 'layouts/main-layout/sidebar/LogoHeader';
-import IconifyIcon from 'components/base/IconifyIcon';
 import PasswordTextField from 'components/common/PasswordTextField';
 
 const checkBoxLabel = { inputProps: { 'aria-label': 'Checkbox' } };
@@ -31,20 +27,18 @@ const SignIn = () => {
   return (
     <Container maxWidth="sm" sx={{ py: 10 }}>
       <LogoHeader sx={{ justifyContent: 'center', mb: 5 }} />
-
+      <Typography variant="h3" align="center" gutterBottom>
+        Sistema de Indicadores de Educación Dual
+      </Typography>
       <Paper sx={{ p: 5 }}>
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
           alignItems={{ sm: 'center' }}
-          justifyContent="space-between"
+          justifyContent="center"
           spacing={1}
         >
-          <Typography variant="h3">Sign in</Typography>
-          <Typography variant="subtitle2" color="neutral.main">
-            or{' '}
-            <Link href={paths.signup} underline="hover">
-              Create an account
-            </Link>
+          <Typography variant="h3" align="center" gutterBottom>
+            Iniciar Sesión
           </Typography>
         </Stack>
 
@@ -54,7 +48,7 @@ const SignIn = () => {
               id="email"
               name="email"
               type="email"
-              placeholder="Enter your email"
+              placeholder="Ingresa tu correo electrónico"
               autoComplete="email"
               fullWidth
               required
@@ -63,7 +57,7 @@ const SignIn = () => {
             <PasswordTextField
               id="password"
               name="password"
-              placeholder="Enter your password"
+              placeholder="Ingresa tu contraseña"
               autoComplete="current-password"
               fullWidth
               required
@@ -79,21 +73,21 @@ const SignIn = () => {
           >
             <FormControlLabel
               control={<Checkbox {...checkBoxLabel} color="primary" />}
-              label={<Typography variant="subtitle1">Remember me</Typography>}
+              label={<Typography variant="subtitle1">Recordarme</Typography>}
             />
 
             <Typography variant="subtitle2" color="primary">
               <Link href="#!" underline="hover">
-                Forgot password?
+                Olvidé mi contraseña
               </Link>
             </Typography>
           </Stack>
 
           <Button type="submit" size="large" variant="contained" sx={{ mt: 2 }} fullWidth>
-            Sign in
+            Iniciar Sesión
           </Button>
 
-          <Divider sx={{ color: 'neutral.main', my: 2 }}>
+          {/*<Divider sx={{ color: 'neutral.main', my: 2 }}>
             <Typography variant="subtitle2"> or sign in with</Typography>
           </Divider>
 
@@ -120,7 +114,7 @@ const SignIn = () => {
                 <Typography>Facebook</Typography>
               </Button>
             </Grid>
-          </Grid>
+          </Grid>*/}
         </Box>
       </Paper>
     </Container>

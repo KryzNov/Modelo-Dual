@@ -7,7 +7,6 @@ import IconifyIcon from 'components/base/IconifyIcon';
 import Search from 'components/common/Search';
 import ElevationScroll from './ElevationScroll';
 import AccountDropdown from './AccountDropdown';
-import LanguageDropdown from './LanguageDropdown';
 import Notification from './Notification';
 
 interface TopbarProps {
@@ -46,7 +45,7 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
           >
             <Link href={rootPaths.root}>
               <IconButton color="inherit" aria-label="logo">
-                <img src="public/LOGO.png" alt="Logo" style={{ width: 56, height: 56 }} />  
+                <img src="dabang/LOGO.png" alt="Logo" style={{ width: 56, height: 56 }} />
               </IconButton>
             </Link>
 
@@ -84,7 +83,6 @@ const Topbar = ({ drawerWidth, onHandleDrawerToggle }: TopbarProps) => {
                 maxWidth: 550,
               }}
             />
-            <LanguageDropdown />
             <Notification />
             <AccountDropdown />
           </Stack>

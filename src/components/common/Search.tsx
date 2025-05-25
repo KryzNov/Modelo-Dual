@@ -21,7 +21,7 @@ const Search = (props: SearchProps) => {
       }}
       type="text"
       variant="filled"
-      placeholder="Search here..."
+      placeholder="Buscar..."
       hiddenLabel
       fullWidth
       {...props}

@@ -40,7 +40,7 @@ const TargetVsRealityChart = ({ style, data }: TargetVsRealityChartProps) => {
       },
 
       xAxis: {
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July'],
+        data: ['AGR', 'MIN', 'TEX', 'TI', 'COM', 'ELECT', 'QUI'],
         boundaryGap: true,
         axisTick: {
           show: false,

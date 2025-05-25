@@ -67,7 +67,7 @@ const CustomerSatisfactionChart = ({ chartRef, data, style }: CustomerSatisfacti
         {
           type: 'category',
           boundaryGap: false,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: ['Micro', 'Pequeña', 'Mediana', 'Grande'],
           show: false,
         },
       ],
@@ -78,31 +78,6 @@ const CustomerSatisfactionChart = ({ chartRef, data, style }: CustomerSatisfacti
         },
       ],
       series: [
-        {
-          name: 'Last Month',
-          type: 'line',
-          stack: 'Customer Satisfaction',
-          smooth: true,
-          areaStyle: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              {
-                offset: 1,
-                color: alpha(theme.palette.info.main, 0),
-              },
-              {
-                offset: 0,
-                color: alpha(theme.palette.info.main, 0.31),
-              },
-            ]),
-          },
-
-          emphasis: {
-            focus: 'series',
-          },
-          data: data['last month'],
-          symbol: 'circle',
-          symbolSize: 8,
-        },
         {
           name: 'This Month',
           type: 'line',

@@ -24,25 +24,25 @@ const sitemap: MenuItem[] = [
   },
   {
     id: 9,
-    name: 'Authentication',
+    name: 'Autenticación',
     pathName: 'authentication',
     icon: 'material-symbols:security-rounded',
     active: true,
     items: [
       {
         id: 10,
-        name: 'Sign in',
+        name: 'Iniciar sesión',
         path: paths.signin,
         pathName: 'sign-in',
         active: true,
       },
-      {
+      /*{
         id: 11,
         name: 'Sign up',
         path: paths.signup,
         pathName: 'sign-up',
         active: true,
-      },
+      },*/
     ],
   },
   {
@@ -53,16 +53,16 @@ const sitemap: MenuItem[] = [
     icon: 'ri:bar-chart-line',
     active: true,
   },
-  {
+  /*{
     id: 5,
     name: 'Sales Report',
     path: '#!',
     pathName: 'sales-report',
     icon: 'ph:chart-line',
-  },
+  },*/
   {
     id: 7,
-    name: 'Settings',
+    name: 'Configuración',
     path: '#!',
     pathName: 'settings',
     icon: 'fluent:settings-24-regular',
@@ -70,7 +70,7 @@ const sitemap: MenuItem[] = [
   },
   {
     id: 8,
-    name: 'Sign Out',
+    name: 'Cerrar sesión',
     path: '#!',
     pathName: 'sign-out',
     icon: 'humbleicons:logout',

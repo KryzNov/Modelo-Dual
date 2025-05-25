@@ -15,7 +15,7 @@ const TopProducts = () => {
   return (
     <Paper sx={{ pt: 3 }}>
       <Typography variant="h4" color="primary.dark" px={3} mb={1.25}>
-        Top Products
+        Duración del modelo Dual
       </Typography>
 
       <Box sx={{ overflow: 'auto' }}>
@@ -23,8 +23,8 @@ const TopProducts = () => {
           <TableHead>
             <TableRow>
               <TableCell>#</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Popularity</TableCell>
+              <TableCell>Duración</TableCell>
+              <TableCell>Cantidad de alumnos</TableCell>
               <TableCell>Sales</TableCell>
             </TableRow>
           </TableHead>

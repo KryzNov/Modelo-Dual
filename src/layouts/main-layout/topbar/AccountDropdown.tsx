@@ -21,17 +21,17 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     id: 0,
-    label: 'Profile',
+    label: 'Perfil',
     icon: 'material-symbols:person',
   },
   {
     id: 1,
-    label: 'My Account',
+    label: 'Mi cuenta',
     icon: 'material-symbols:account-box-sharp',
   },
   {
     id: 2,
-    label: 'Logout',
+    label: 'Cerrar sesión',
     icon: 'uiw:logout',
   },
 ];
@@ -89,7 +89,7 @@ const AccountDropdown = () => {
         <Box sx={{ display: { xs: 'none', xl: 'block' } }}>
           <Stack direction="row" alignItems="center" columnGap={6}>
             <Typography variant="h6" component="p" color="primary.darker" gutterBottom>
-              Musfiq
+              Christian
             </Typography>
             <IconifyIcon icon="ph:caret-down-bold" fontSize={16} color="primary.darker" />
           </Stack>

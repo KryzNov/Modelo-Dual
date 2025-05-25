@@ -14,10 +14,6 @@ const CustomerSatisfaction = () => {
     'this month': false,
   });
 
-  const totalLastMonthSatisfaction = useMemo(
-    () => getTotal(customerSatisfaction['last month']),
-    [customerSatisfaction['last month']],
-  );
   const totalThisMonthSatisfaction = useMemo(
     () => getTotal(customerSatisfaction['this month']),
     [customerSatisfaction['this month']],
@@ -40,8 +36,8 @@ const CustomerSatisfaction = () => {
 
   return (
     <Paper sx={{ py: 3, px: 1.5 }}>
-      <Typography variant="h4" color="primary.dark" mb={3}>
-        Customer Satisfaction
+      <Typography variant="h4" color="primary.dark" mb={3} align='center' gutterBottom>
+        Tamaños de Unidad Dual
       </Typography>
 
       <CustomerSatisfactionChart
@@ -57,22 +53,14 @@ const CustomerSatisfaction = () => {
         sx={{ borderTop: 1, borderColor: 'grey.A100', pt: 2 }}
         gap={2}
       >
-        <LegendToggleButton
-          name="Last Month"
-          svgIcon={Pin}
-          color="info.main"
-          value={currencyFormat(totalLastMonthSatisfaction)}
-          legend={legend}
-          onHandleLegendToggle={handleLegendToggle}
-        />
-        <LegendToggleButton
+        {/*<LegendToggleButton
           name="This Month"
           svgIcon={Pin}
           color="success.dark"
           value={currencyFormat(totalThisMonthSatisfaction)}
           legend={legend}
           onHandleLegendToggle={handleLegendToggle}
-        />
+        />*/}
       </Stack>
     </Paper>
   );
