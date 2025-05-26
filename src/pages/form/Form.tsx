@@ -278,10 +278,10 @@ const Form = () => {
           <Stack spacing={4}>
             <Box>
               <Typography variant="body1" sx={{ mb: 1.5 }}>
-                Nombre completo
+                Nombre de la IES
               </Typography>
               <TextField
-                label="Ej. Juan Pérez"
+                label="Ej. Instituto Tecnológico de Aguascalientes"
                 value={formData.personal.nombre}
                 onChange={handleChange('personal', 'nombre')}
                 fullWidth
@@ -309,14 +309,14 @@ const Form = () => {
               </Stack>
             </Box>
 
-            {renderSelectField('personal', 'institucion', 'Nombre de la institución', instituciones)}
+            {renderSelectField('personal', 'institucion', 'Subsistema de la IES', instituciones)}
 
             <Box>
               <Typography variant="body1" sx={{ mb: 1.5 }}>
                 Dirección
               </Typography>
               <TextField
-                label="Ej. Av. Siempre Viva 742"
+                label="Ej. Av. Hidalgo 742"
                 value={formData.personal.direccion}
                 onChange={handleChange('personal', 'direccion')}
                 fullWidth
