@@ -58,7 +58,8 @@ export const routes = [
       },
       {
         path: '*',
-        element: <Page404 />,
+        index: true,
+        element: <Dashboard />,
       },
     ],
   },
